@@ -17,10 +17,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void findViews(View view){
-        
+
         EditText edNumber = (EditText) findViewById(R.id.number);
         TextView tvSecert = (TextView) findViewById(R.id.secret);
         TextView tvInfo = (TextView) findViewById(R.id.info);
         Button btSend = (Button) findViewById(R.id.send);
     }
+    int i = (int)(Math.random()*100)+1;
+
 }
