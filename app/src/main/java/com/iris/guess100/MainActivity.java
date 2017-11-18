@@ -1,5 +1,6 @@
 package com.iris.guess100;
 
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,14 +16,46 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
     }
-
-    public void findViews(View view){
+    int i = (int)(Math.random()*100)+1;
+    public void findViews(View view) {
 
         EditText edNumber = (EditText) findViewById(R.id.number);
         TextView tvSecert = (TextView) findViewById(R.id.secret);
         TextView tvInfo = (TextView) findViewById(R.id.info);
         Button btSend = (Button) findViewById(R.id.send);
-    }
-    int i = (int)(Math.random()*100)+1;
+        String secert = String.valueOf(i);
+        int number = Integer.parseInt(edNumber.getText().toString());
+        tvSecert.setText(secert);
+        int min = 0;
+        int max = 100;
+        int h = 0;
+        while (h == 0) {
+            if (number < i && number < 100 && number > 0) {
+                min = number;
+                new AlertDialog.Builder(this)
+                        .setMessage(min + "~" + max)
+                        .setPositiveButton("Ok", null)
+                        .show();
+            } else if (number > i && number < 100 && number > 0) {
+                max = number;
+                new AlertDialog.Builder(this)
+                        .setMessage(min + "~" + max)
+                        .setPositiveButton("Ok", null)
+                        .show();
+            } else if (number > 100 || number < 0) {
+                new AlertDialog.Builder(this)
+                        .setMessage("請輸入" + min + "~" + max)
+                        .setPositiveButton("Ok", null)
+                        .show();
+            } else if (number == i) {
+                new AlertDialog.Builder(this)
+                        .setMessage("答對了")
+                        .setPositiveButton("Ok", null)
+                        .show();
+                h = 1;
+            }
 
+        }
+
+    }
 }
