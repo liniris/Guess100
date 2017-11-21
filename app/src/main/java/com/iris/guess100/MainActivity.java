@@ -14,10 +14,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        this.findViews();
     }
     int i = (int)(Math.random()*100)+1;
-    public void findViews(View view) {
+    public void findViews() {
 
         EditText edNumber = (EditText) findViewById(R.id.number);
         TextView tvSecert = (TextView) findViewById(R.id.secret);
@@ -26,6 +26,10 @@ public class MainActivity extends AppCompatActivity {
         String secert = String.valueOf(i);
         int number = Integer.parseInt(edNumber.getText().toString());
         tvSecert.setText(secert);
+    }
+    EditText edNumber = (EditText) findViewById(R.id.number);
+    int number = Integer.parseInt(edNumber.getText().toString());
+        public void send(View view) {
         int min = 0;
         int max = 100;
         int h = 0;
